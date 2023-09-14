@@ -1,0 +1,3 @@
+D:/ry/vs/testctp/out/build/x64-debug/CMakeFiles/testctp.dir
+D:/ry/vs/testctp/out/build/x64-debug/CMakeFiles/edit_cache.dir
+D:/ry/vs/testctp/out/build/x64-debug/CMakeFiles/rebuild_cache.dir

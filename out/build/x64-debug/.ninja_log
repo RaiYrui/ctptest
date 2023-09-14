@@ -1,0 +1,7 @@
+# ninja log v5
+2	932	7163644558042009	CMakeFiles/testctp.dir/MymdSpi.cpp.obj	8d6afd6fab7b97aa
+2	1063	7163753319732008	CMakeFiles/testctp.dir/testctp.cpp.obj	5c1a9b8c205f8066
+986	1326	7163761725494408	testctp.exe	27d023fa9e2b5d28
+2	984	7163761722818384	CMakeFiles/testctp.dir/MyTrSpi.cpp.obj	a19b80c958173d92
+2	1466	7163852276229076	CMakeFiles/testctp.dir/testctp.cpp.obj	5c1a9b8c205f8066
+1467	1826	7163852279121339	testctp.exe	27d023fa9e2b5d28
