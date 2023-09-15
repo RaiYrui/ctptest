@@ -13,8 +13,9 @@ void MyTrSpi::OnRspAuthenticate(CThostFtdcRspAuthenticateField* pRspAuthenticate
 			std::cout << "send login request" << std::endl;
 		else
 			std::cerr << "login request failed" << std::endl;
-	}else
-		std::cout << "Authenticate failed"<<" error:"<< (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
+	}
+	else
+		std::cout << "Authenticate failed" << " error:" << (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
 }
 void MyTrSpi::Auth() {
 	static int requestID = 0;
@@ -61,7 +62,7 @@ void MyTrSpi::OnRspUserLogin(CThostFtdcRspUserLoginField* pRspUserLogin, CThostF
 			std::cerr << "confirm result failed" << std::endl;
 	}
 	else
-		std::cout << "Login failed" <<" error" << (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
+		std::cout << "Login failed" << " error" << (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
 }
 void MyTrSpi::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField* pSettlementInfoConfirm, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
 	if (pRspInfo && pRspInfo->ErrorID == 0) {
@@ -72,17 +73,17 @@ void MyTrSpi::OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField* p
 		memset(&instrumentReq, 0, sizeof(instrumentReq));
 		strcpy(instrumentReq.InstrumentID, g_pTradeInstrumentID);
 		static int requestID = 0;
-		//int rt = MyTrApi->ReqQryInstrument(&instrumentReq, requestID);
 		std::cout << "Strat Trading" << std::endl;
-		if(islogin)
-		Trade(g_pTradeInstrumentID);
-		/*if (!rt)
-			std::cout << "query intrument send" << std::endl;
-		else
-			std::cerr << "query for intrument failed" << std::endl;*/
+		if (islogin)
+			Trade(g_pTradeInstrumentID);
+		//int rt = MyTrApi->ReqQryInstrument(&instrumentReq, requestID);
+		//if (!rt)
+		//	std::cout << "query intrument send" << std::endl;
+		//else
+		//	std::cerr << "query for intrument failed" << std::endl;
 	}
 	else
-		std::cout << "SettlementInfoConfirm failed"<<" error:"<<(pRspInfo? pRspInfo->ErrorMsg:"null pointer")<< std::endl;
+		std::cout << "SettlementInfoConfirm failed" << " error:" << (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
 }
 void MyTrSpi::OnRspQryInstrument(CThostFtdcInstrumentField* pInstrument, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
 	if (pRspInfo && pRspInfo->ErrorID == 0) {
@@ -107,7 +108,7 @@ void MyTrSpi::OnRspQryInstrument(CThostFtdcInstrumentField* pInstrument, CThostF
 			std::cerr << "trading account query failed" << std::endl;
 	}
 	else
-		std::cout << "Instrument query failed"<<" error:"<<(pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
+		std::cout << "Instrument query failed" << " error:" << (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
 }
 void MyTrSpi::OnRspQryTradingAccount(CThostFtdcTradingAccountField* pTradingAccount, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
 	if (pRspInfo && pRspInfo->ErrorID == 0) {
@@ -132,7 +133,7 @@ void MyTrSpi::OnRspQryTradingAccount(CThostFtdcTradingAccountField* pTradingAcco
 			std::cerr << "InvestorPosition query failed" << std::endl;
 	}
 	else
-		std::cout << "Trading query failed" <<" error:"<< (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
+		std::cout << "Trading query failed" << " error:" << (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
 }
 void MyTrSpi::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField* pInvestorPosition, CThostFtdcRspInfoField* pRspInfo, int nRequestID, bool bIsLast) {
 	if (pRspInfo && pRspInfo->ErrorID == 0) {
@@ -152,10 +153,10 @@ void MyTrSpi::OnRspQryInvestorPosition(CThostFtdcInvestorPositionField* pInvesto
 		// 报单请求
 		//if (islogin)
 		//	Trade(g_pTradeInstrumentID);
-				
+
 	}
 	else {
-		std::cout << "InvestorPosition query failed"<<" error:"<< (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
+		std::cout << "InvestorPosition query failed" << " error:" << (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
 	}
 }
 void MyTrSpi::Trade(TThostFtdcInstrumentIDType instrumentid) {
@@ -180,7 +181,7 @@ void MyTrSpi::Trade(TThostFtdcInstrumentIDType instrumentid) {
 	order.UserForceClose = 0;
 	static int requestid = 0;
 	int rt = MyTrApi->ReqOrderInsert(&order, ++requestid);
-	if(!rt)
+	if (!rt)
 		std::cout << "Order send success" << std::endl;
 	else
 		std::cerr << "Order send failed" << std::endl;
@@ -193,8 +194,9 @@ void MyTrSpi::OnRspOrderInsert(CThostFtdcInputOrderField* pInputOrder, CThostFtd
 		std::cout << "VolumeTotalOriginal： " << pInputOrder->VolumeTotalOriginal << std::endl;
 		std::cout << "Direction： " << pInputOrder->Direction << std::endl;
 
-	}else
-		std::cout << "Order Insert failed" <<" error:"<<(pRspInfo?pRspInfo->ErrorMsg:"null pointer") << std::endl;
+	}
+	else
+		std::cout << "Order Insert failed" << " error:" << (pRspInfo ? pRspInfo->ErrorMsg : "null pointer") << std::endl;
 }
 void MyTrSpi::OnRtnOrder(CThostFtdcOrderField* pOrder) {
 	char str[10];

@@ -14,8 +14,8 @@ CThostFtdcMdApi* MyMdApi = nullptr;                           // 行情指针
 char MdFrontAddr[] = "tcp://115.238.45.57:51213";
 char TrFrontAddr[] = "tcp://115.238.45.57:51205";
 CThostFtdcTraderApi* MyTrApi = nullptr;
-char* ArrayofConracts[] = { (char*)"a2311", (char*)"ag2312", (char*)"al2310", (char*)"au2312" };  // 行情合约代码列表
-TThostFtdcInstrumentIDType g_pTradeInstrumentID = "au2312";
+char* ArrayofConracts[] = { (char*)"a2311",(char*)"cu2310",(char*)"AP310",(char*)"IC2309" };  // 行情合约代码列表
+TThostFtdcInstrumentIDType g_pTradeInstrumentID = "AP310";
 //unordered_map<string, TickToKlineHelper> g_KlineHash;// 不同合约的k线存储表
 int main()
 {

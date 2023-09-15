@@ -13,7 +13,7 @@ project ("testctp")
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 SET(SRC ${CMAKE_CURRENT_SOURCE_DIR}/testctp.cpp ${CMAKE_CURRENT_SOURCE_DIR}/MymdSpi.cpp ${CMAKE_CURRENT_SOURCE_DIR}/MyTrSpi.cpp)
 link_directories(${CMAKE_CURRENT_SOURCE_DIR})
-# 将源代码添加到此项目的可执行文件。
+# 将源代码添加到此项目的可执行文件。  
 add_executable (testctp ${SRC} "MyTrSpi.h" "MyTrSpi.cpp")
 target_link_libraries(testctp thostmduserapi_se thosttraderapi_se)
 
